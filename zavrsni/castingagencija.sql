@@ -2,6 +2,8 @@ drop database if exists castingagencija;
 create database castingagencija character set utf8;
 use castingagencija;
 
+# c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "C:\JP25SQL\zavrsni\castingagencija.sql"
+
 create table castingagencija(
     sifra int not null primary key auto_increment,
     plesac int,
@@ -34,3 +36,10 @@ create table opisposla (
     placa decimal(18.2)
     
 );
+
+
+alter table castingagencija add foreign key (plesac) references plesac(sifra);
+alter table castingagencija add foreign key (ples) references ples(sifra);
+alter table castingagencija add foreign key (opisposla) references opisposla(sifra);
+
+
